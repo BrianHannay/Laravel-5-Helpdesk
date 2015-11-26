@@ -13,18 +13,16 @@
 
 use App\Ticket;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/', 'HelpDeskController@index');
 
 //user stuff
 Route::post('search/search', 'HelpDeskController@searchTickets')->middleware('auth');
-Route::get('ticket/submit/', 'HelpDeskController@create')->middleware('auth');
+
+Route::get('ticket/submit/', 'HelpDeskController@getTicket')->middleware('auth');
 Route::post('ticket/submit/', 'HelpDeskController@postTicket')->middleware('auth');
+
 Route::get('ticket/{id}', 'HelpDeskController@showTicket')->middleware('auth');
-Route::post('ticket/message/{ticketId}', 'HelpDeskController@message')->middleware('auth');
+Route::post('ticket/message/{ticketId}', 'HelpDeskController@postMessage')->middleware('auth');
 Route::get('user/me', 'HelpDeskController@showUser')->middleware('auth');
 Route::get('user/{id}', 'HelpDeskController@showUser');
 
@@ -39,7 +37,7 @@ Route::post('/user/editRoles/{userId}', 'HelpDeskController@editRoles')->middlew
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('/loggedIn', function(){
-    return Redirect::to(Session::pull('redirectTo', '/user/me'));
+    return Redirect::to(Session::pull('redirectTo', '/'));
 });
 Route::get('auth/signup', 'Auth\AuthController@getRegister');
 Route::post('auth/signup', 'Auth\AuthController@postRegister')->middleware('firstLogin');

@@ -11,6 +11,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        //make an administrator
         $admin = new App\User();
         $admin->email = "brian.hannay@itas.ca";
         $admin->first_name = "Administrator";
