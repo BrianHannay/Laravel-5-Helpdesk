@@ -1,0 +1,27 @@
+namespace App;
+use Illuminate\Support\Facades\Hash;
+
+$user = new User
+
+$user->username="JOE SHMOE".rand();
+
+$user->save();
+
+$user->tickets
+
+$user->messages
+
+$ticket = new Ticket()
+
+$ticket->createdBy()->associate($user);
+$ticket->assignedTo()->associate($user);
+
+$ticket->save();
+
+
+$message = new Message();
+
+$message->ticket()->associate($ticket);
+$message->user()->associate($user);
+
+$user->roles;

@@ -1,0 +1,11 @@
+div#jumbo {
+    background-color: steelblue;
+}
+
+.alternateBackground{
+    background-color: #F6F6F6;
+}
+
+.alternateBackground:nth-child(even){
+    background-color: #eeeeee;
+}
